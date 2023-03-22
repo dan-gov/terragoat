@@ -1,4 +1,4 @@
-resource "aws_instance" "web_host" {
+resource "aws_instance" "web_hos1t" {
   # ec2 have plain text secrets in user data
   ami           = "${var.ami}"
   instance_type = "t2.nano"
@@ -114,7 +114,7 @@ resource "aws_security_group" "web-node" {
   }
 }
 
-resource "aws_vpc" "web_vpc" {
+resource "aws_vpc" "web_vp1c" {
   cidr_block           = "172.16.0.0/16"
   enable_dns_hostnames = true
   enable_dns_support   = true
@@ -132,7 +132,7 @@ resource "aws_vpc" "web_vpc" {
   })
 }
 
-resource "aws_subnet" "web_subnet" {
+resource "aws_subnet" "web_su1bnet" {
   vpc_id                  = aws_vpc.web_vpc.id
   cidr_block              = "172.16.10.0/24"
   availability_zone       = "${var.region}a"
@@ -173,7 +173,7 @@ resource "aws_subnet" "web_subnet2" {
 }
 
 
-resource "aws_internet_gateway" "web_igw" {
+resource "aws_internet_gateway" "web1_igw" {
   vpc_id = aws_vpc.web_vpc.id
 
   tags = merge({
