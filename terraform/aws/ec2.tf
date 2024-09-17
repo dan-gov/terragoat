@@ -1,4 +1,4 @@
-resource "aws_instance" "web_host" {
+resource "aws_instance" "web_ho111st" {
   # ec2 have plain text secrets in user data
   ami           = "${var.ami}"
   instance_type = "t2.nano"
@@ -31,7 +31,7 @@ EOF
   })
 }
 
-resource "aws_ebs_volume" "web_host_storage" {
+resource "aws_ebs_volume" "web_host_sto1rage" {
   # unencrypted volume
   availability_zone = "${var.region}a"
   #encrypted         = false  # Setting this causes the volume to be recreated on apply 
@@ -50,7 +50,7 @@ resource "aws_ebs_volume" "web_host_storage" {
   })
 }
 
-resource "aws_ebs_snapshot" "example_snapshot" {
+resource "aws_ebs_snapshot" "example_sna1pshot" {
   # ebs snapshot without encryption
   volume_id   = "${aws_ebs_volume.web_host_storage.id}"
   description = "${local.resource_prefix.value}-ebs-snapshot"
@@ -114,7 +114,7 @@ resource "aws_security_group" "web-node" {
   }
 }
 
-resource "aws_vpc" "web_vpc" {
+resource "aws_vpc" "web_vp1c" {
   cidr_block           = "172.16.0.0/16"
   enable_dns_hostnames = true
   enable_dns_support   = true
@@ -152,7 +152,7 @@ resource "aws_subnet" "web_subnet" {
   })
 }
 
-resource "aws_subnet" "web_subnet2" {
+resource "aws_subnet" "web_sub1net2" {
   vpc_id                  = aws_vpc.web_vpc.id
   cidr_block              = "172.16.11.0/24"
   availability_zone       = "${var.region}b"
